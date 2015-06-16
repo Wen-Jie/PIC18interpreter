@@ -6,7 +6,6 @@
                                                             //means that RAM bank is specified by BSR register, otherwise BSR register is ignored.
 #define Destination_select_bit       0b0000001000000000     //Clear other bits except the select bit,if d equal to Destination_select_bit
                                                             //means that result store in file register, otherwise store in WREG.
-#define Bit_address                  0b0000111000000000     //Clear other bits except the bit address bbb.
 
 int BSR;                     //Bank select register
 int WREG;                    //Working register

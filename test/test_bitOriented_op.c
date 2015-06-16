@@ -47,7 +47,7 @@ void test_op_BSF_set_bit_0_of_0x11_file_regiter(void)
     TEST_ASSERT_EQUAL(0b00011111, op_BSF(0b1001001000010001)); //bbb = 001, a = 0
 }
 
-void test_op_BSF_clear_bit_0_of_0x11_file_regiter_in_bank_1(void)
+void test_op_BSF_set_bit_0_of_0x11_file_regiter_in_bank_1(void)
 {
     BSR = 0x01;
     REG1[0x11] = 0b00011101;
@@ -59,4 +59,30 @@ void test_op_BSF_clear_bit_0_of_0x11_file_regiter_in_bank_5(void)
     BSR = 0x05;
     REG5[0x11] = 0b00011101;
     TEST_ASSERT_EQUAL(0b00011111, op_BSF(0b1001001100010001)); //bbb = 001, a = 1
+}
+
+void test_op_BSF_set_bit_7_of_0x11_file_regiter_in_bank_1(void)
+{
+    BSR = 0x01;
+    REG1[0x11] = 0b00011101;
+    TEST_ASSERT_EQUAL(0b10011101, op_BSF(0b1001111100010001)); //bbb = 111, a = 1
+}
+
+void test_op_BSF_set_bit_7_of_0x11_file_regiter(void)
+{
+    REG0[0x11] = 0b00011101;
+    TEST_ASSERT_EQUAL(0b10011101, op_BSF(0b1001111000010001)); //bbb = 111, a = 0
+}
+
+void test_op_BCF_clear_bit_7_of_0x11_file_regiter_in_bank_1(void)
+{
+    BSR = 0x01;
+    REG1[0x11] = 0b10011101;
+    TEST_ASSERT_EQUAL(0b00011101, op_BCF(0b1001111100010001)); //bbb = 111, a = 1
+}
+
+void test_op_BCF_clear_bit_7_of_0x11_file_regiter(void)
+{
+    REG0[0x11] = 0b10011101;
+    TEST_ASSERT_EQUAL(0b00011101, op_BCF(0b1001111000010001)); //bbb = 111, a = 0
 }
